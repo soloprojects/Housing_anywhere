@@ -1,0 +1,44 @@
+version: "3.7"
+services:
+    client:
+        image: webapp-client
+        restart: "no"
+        ports:
+            - "3000:3000"
+        working_dir: /client/src
+        volumes:
+            - ./client:/client/src
+        build: ./client
+        entrypoint: ["npm", "start"]
+        links:
+            - api
+        networks:
+            - webappnetwork
+    api:
+        image: webapp-api
+        restart: "no"
+        ports:
+            - "9000:9000"
+            - "9229:9229"
+        volumes:
+            - ./api:/api
+            - /api/node_modules
+        build: ./api
+        depends_on:
+            - mongodb
+        networks:
+            - webappnetwork
+    mongodb:
+        image: mongo
+        restart: "no"
+        container_name: mongodb
+        volumes:
+            - ./data-node:/data/db
+        ports:
+            - 27017:27017
+        command: mongod --noauth --smallfiles
+        networks:
+            - webappnetwork
+networks:
+    webappnetwork:
+        driver: bridge

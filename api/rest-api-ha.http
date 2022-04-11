@@ -1,0 +1,17 @@
+### GET request that fetches all drones
+GET http://localhost:9000/api/v1/drones/
+Content-Type: application/json
+
+<> 2019-06-23T051738.200.json
+<> 2019-06-23T051727.200.json
+
+### POST request to checkin some guests.An empty line needs to separate the request header from the actual payload.
+POST http://localhost:9000/api/v1/drones/
+Content-Type: application/json
+
+{
+  "y": 10,
+  "quadrant": 10
+}
+
+###
