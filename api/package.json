@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "NODE_ENV=production node ./bin/www",
+    "dev": "cross-env NODE_ENV=production node ./bin/www",
     "debug": "NODE_ENV=development DEBUG=api:* nodemon --inspect=0.0.0.0:9229 ./bin/www",
     "debug-all": "NODE_ENV=development DEBUG=* nodemon --inspect=0.0.0.0:9229 ./bin/www",
     "debug-api": "NODE_ENV=development DEBUG=api:* nodemon --inspect=0.0.0.0:9229 ./bin/www"
@@ -29,5 +30,8 @@
     "socket.io": "^2.3.0",
     "uuid": "^3.3.2",
     "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }
